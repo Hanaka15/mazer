@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Maze Generator & Solver</title>
+    <link rel="stylesheet" href="/style/style.css">
+</head>
+<body>
+    <div class="controls" role="toolbar" aria-label="Maze controls">
+        <div class="control-group">
+            <label for="sizeSlider">Size:</label>
+            <input type="range" id="sizeSlider" min="10" max="100" value="20" 
+                   aria-describedby="sizeValue" role="slider">
+            <span class="value-display" id="sizeValue">20</span>
+        </div>
+        <div class="control-group">
+            <label for="speedSlider">Speed:</label>
+            <input type="range" id="speedSlider" min="0" max="100" step="10" value="30"
+                   aria-describedby="speedValue" role="slider">
+            <span class="value-display" id="speedValue">30</span>
+        </div>
+        <button id="generateBtn" aria-label="Generate new maze">Generate New Maze</button>
+        <button id="solveBtn" aria-label="Solve current maze">Solve</button>
+        <div class="control-group">
+            <input type="checkbox" id="braided" checked aria-describedby="braidedLabel">
+            <label for="braided" id="braidedLabel">Braided (remove dead ends)</label>
+        </div>
+        <div class="control-group">
+            <input type="checkbox" id="continuous" aria-describedby="continuousLabel">
+            <label for="continuous" id="continuousLabel">Continuous mode</label>
+        </div>
+    </div>
+    <canvas id="canvas" role="img" aria-label="Maze visualization"></canvas>
+
+<script type="module">
+// Import the main application class
+import { MazeApp } from './js/app.js';
+
+// Initialize Application
+const mazeApp = new MazeApp();
+// Make it globally available for solver callbacks
+window.mazeApp = mazeApp;
+</script>
+</body>
+</html>
